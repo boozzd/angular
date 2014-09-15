@@ -1,6 +1,6 @@
 <div ng-controller="LoginController as login" class="login-container">
 <div class="login-alerts col-sm-8 col-sm-offset-2">
-    <alert ng-repeat="aler in login.alerts" type="{{alert.type}}" close="login.removeAlerts($index)">{{alert.msg}}</alert>
+    <alert ng-repeat="alert in login.alerts" type="{{alert.type}}" close="login.removeAlerts($index)">{{alert.msg}}</alert>
 </div>
    <script type="text/ng-template" id="registrationTemplate.html">
         <div class="modal-header">
