@@ -1,0 +1,64 @@
+<div ng-controller="LoginController as login" class="login-container">
+<div class="login-alerts col-sm-8 col-sm-offset-2">
+    <alert ng-repeat="alert in login.alerts" type="{{alert.type}}" close="login.removeAlerts($index)">{{alert.msg}}</alert>
+</div>
+   <script type="text/ng-template" id="registrationTemplate.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Регистрация</h3>
+        </div>   
+        <div class="modal-body clearfix">
+            <form class="form-horizontal" name="regForm">
+                <div class="form-group" ng-class="{'has-error': regForm.login.$invalid}">
+                    <label for="reg-login" class="control-label col-sm-4">Логин</label>
+                    <div class="col-sm-5">
+                        <input type="text" placeholder="имя" class="form-control" id="reglogin" ng-model="credentials.login" name="login" required />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': regForm.email.$invalid}">
+                    <label for="reg-email" class="control-label col-sm-4">E-mail</label>
+                    <div class="col-sm-5">
+                        <input type="email" placeholder="e-mail" class="form-control" id="regemail" ng-model="credentials.email" name="email" required />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{false: 'has-error', true: ''}[$index == errorMsg]">
+                    <label for="reg-password" class="control-label col-sm-4">Пароль</label>
+                    <div class="col-sm-5">
+                        <input type="password" placeholder="пароль" class="form-control" id="regpassword" ng-model="credentials.password" required />
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{false: 'has-error', true: ''}[$index == errorMsg]">
+                    <label for="reg-password-confirm" class="control-label col-sm-4">Повторите пароль</label>
+                    <div class="col-sm-5">
+                        <input type="password" placeholder="пароль" class="form-control" id="regpasswordconfirm" ng-model="credentials.confirmPass" required />
+                    </div>
+                </div>
+                <div ng-if="errorMsg" class="alert-danger">{{errorMsg}}</div>
+                <div ng-init="setForm(regForm)"></div>
+                <button class="btn btn-primary col-sm-4 col-sm-offset-1" ng-click="registration()">Регистрация</button>
+                <button class="btn btn-warning col-sm-4 col-sm-offset-2" ng-click="cancel()">Отмена</button>
+            </form>
+        </div>
+    </script>
+    <h2>Автортизация</h2>
+    <form class="form-horizontal">
+        <div class="form-group" ng-class="{false: 'has-error', true: ''}[$index == login.errorMsg]">
+            <label for="login" class="control-label col-sm-3">Введите имя:</label>
+            <div class="col-sm-9">
+                <input placeholder="имя" id="login" type="text" ng-model="login.credentials.login" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{false: 'has-error', true: ''}[$index == login.errorMsg]">
+            <label for="password" class="control-label col-sm-3">Введите пароль:</label>
+            <div class="col-sm-9 controls">
+                <input placeholder="пароль" id="password" type="password" ng-model="login.credentials.password" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-primary col-sm-3" ng-click="login.login()">Войти</button>
+                <button class="btn btn-warning col-sm-3 col-sm-offset-6" ng-click="login.registrationOpen()">Регистрация</button>
+            </div>
+        </div>
+        <div class="alert-danger login-error" ng-if="login.errorMsg">{{login.errorMsg}}</div>
+    </form>
+</div>

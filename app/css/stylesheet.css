@@ -1,0 +1,24 @@
+body, p{
+    padding: 0;
+    margin: 0;
+}
+.login-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    height: 250px;
+    margin-top: -125px;
+    margin-left: -300px;
+}
+.login-error{
+	text-align: center;
+	padding: 5px;
+}
+.login-alerts{
+    position: absolute;
+    top: -100px;
+}
+form input[ng-invalid]{
+    border-color: #a94442;
+}
