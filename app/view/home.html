@@ -1,4 +1,17 @@
 <div ng-controller="HomeController as home">
-    <h1>Hello {{home.credentials.u_name}}</h1>
-    <button class="btn btn-info" ng-click="home.logout() ">Logout</button>
+    <div class="panel panel-default clearfix">
+        <div class="panel-body col-md-12 my-places" ng-repeat="place in home.places">
+            <h1 class="col-md-offset-0">{{place.name}}</h1>
+            <figure class="col-md-4">
+                <img ng-src="/rest/public/images/{{place.image}}" alt="{{place.name}}" class="img-thumbnail my-image"/>
+            </figure>
+            <div class="col-md-8">
+                {{place.description}}
+            </div>
+            <div class="col-md-2 col-md-offset-10 text-right">
+                <a href="/#/home/{{place.url}}" class="btn btn-success">Подробнее <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+
+    </div>
 </div>

@@ -344,6 +344,10 @@ abstract class Model_Base{
         return $this->query_db->fetchColumn();
     }
 
+    public function __toString(){
+        return $this->getSelect();
+    }
+
 }
 
 

@@ -8,14 +8,18 @@
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
         <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-cookie/angular-cookie.min.js"></script>
         <script src="app/script/controller.js"></script>
         <script src="app/script/service.js"></script>
+        <script src="app/script/directive.js"></script>
         <script src="app/script/app.js"></script>
 
         <meta charset="UTF-8"/>
 	</head>
 	<body>
 		<div class="container" >
+            <div  navbar>
+            </div>
             <ng-view></ng-view>
             <div class="footer">
                 <copyright></copyright>

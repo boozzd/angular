@@ -18,8 +18,5 @@ Class Controller_Index Extends Controller_Base {
 //        var_dump($user_model->getUsers());
     }
 
-    function login(){
-        echo "test";
-    }
 
 }

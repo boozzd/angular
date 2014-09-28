@@ -22,3 +22,13 @@ body, p{
 form input[ng-invalid]{
     border-color: #a94442;
 }
+.my-image{
+    max-height: 200px;
+    max-width: 300px;
+}
+.my-places:not(:last-child){
+    border-bottom: 1px solid #dddddd;
+}
+img:hover{
+    opacity: 0.9;
+}

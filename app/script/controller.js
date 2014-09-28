@@ -3,16 +3,14 @@ function LoginController(location, auth, cacheFactory, modal){
     contr.credentials = {login: "", password: ""};
     contr.alerts = [];
     contr.login = function(){
-        function redirector(value){
-            if(angular.isObject(value)){
-                location.path('home');
-            }else{
-                contr.errorMsg = 'Комбинация логина и пароля не совпадает!';
-                contr.credentials = {login: "", password: ""};
-            }
-        }
-        auth.auth(this.credentials, redirector);
+        auth.auth(this.credentials).then(function(value) {
+            location.path('home');
+        },function(){
+            contr.errorMsg = 'Комбинация логина и пароля не совпадает!';
+            contr.credentials = {login: "", password: ""};
+        });
     };
+
     contr.registrationOpen = function(){
             var modalInstance = modal.open({
                 templateUrl: 'registrationTemplate.html',
@@ -20,15 +18,12 @@ function LoginController(location, auth, cacheFactory, modal){
                 resolve: {}
             }); 
             modalInstance.result.then(function(data){
-                auth.register(data, showAlert);
-            });
-            function showAlert(data){
-                if(data == 1){
+                auth.register(data).then(function(value){
                     contr.addAlert({'type': 'success', 'msg': 'Вы успешно зарегистрировались.'});
-                }else{
+                },function(){
                     contr.addAlert({'type': 'danger', 'msg': 'Произошла ошибка. Повторите регистрацию.'});
-                }
-            }   
+                });
+            });
     }
 
     contr.addAlert = function(data){
@@ -37,6 +32,7 @@ function LoginController(location, auth, cacheFactory, modal){
     contr.removeAlerts = function(index){
         contr.alerts.splice(index, 1);
     }
+
 }
 function regModalController($scope, $modalInstance){
     $scope.credentials = {login: "", password: "", confirmPass: "", email: ""};
@@ -60,16 +56,32 @@ function regModalController($scope, $modalInstance){
     }
 }
 
-function HomeController(location, auth){
+function HomeController(location, auth, placesService, rootScope){
     var contr = this;
     if(auth.isAuth()){
         contr.credentials = auth.getAuth();
+
         contr.logout = function(){
-            auth.logout(redirector);
-            function redirector(){
-                location.path('login');
-            }
-        }
+            auth.logout();
+        };
+
+        placesService.getPlaces().then(function(data){
+            contr.places = data;
+        });
+
+    }else{
+        location.path('login');
+    }
+}
+
+function PlaceController(location, auth,placesService,$routeParams){
+    var contr = this;
+    if(auth.isAuth()){
+        var url = $routeParams.placeUrl;
+        placesService.getPlace(url).then(function(data){
+            contr.place = data;
+        });
+
     }else{
         location.path('login');
     }

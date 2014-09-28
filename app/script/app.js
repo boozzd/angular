@@ -5,17 +5,25 @@
         $routeProvider.when('/login',{
             templateUrl: 'app/view/login.html',
             controller: 'LoginController'
-        });
-        $routeProvider.when('/home', {
+        })
+        .when('/home', {
             templateUrl: 'app/view/home.html',
             controller: 'HomeController'
-        });
-        $routeProvider.otherwise({
+        })
+        .when('/home/:placeUrl',{
+            templateUrl: 'app/view/place.html',
+            controller: 'PlaceController'
+            })
+        .otherwise({
             redirectTo:'login'
         });
     }
-    angular.module('app',['ngRoute', 'ui.bootstrap'])
+    angular
+        .module('app',['ngRoute', 'ui.bootstrap', 'ipCookie'])
         .config(config)
         .controller('LoginController',['$location','AuthService','$cacheFactory','$modal', LoginController])
-        .controller('HomeController', ['$location','AuthService',HomeController])
-        .factory('AuthService',['$http','$cacheFactory',AuthService]);
+        .controller('HomeController', ['$location','AuthService', 'PlacesService',HomeController])
+        .controller('PlaceController', ['$location','AuthService','PlacesService','$routeParams',PlaceController])
+        .factory('AuthService',['$http','ipCookie','$location','$rootScope','$q',AuthService])
+        .factory('PlacesService',['$http','$q', PlacesService])
+        .directive('navbar',['AuthService','$rootScope',navbarDirective]);

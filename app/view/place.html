@@ -1,0 +1,12 @@
+<div ng-controller="PlaceController as place">
+    <div class="col-md-12 panel panel-default">
+        <h1 class="col-md-offset-0">{{place.place.name}}</h1>
+        <div class="col-md-4 panel-body">
+            <img ng-src="/rest/public/images/{{place.place.image}}" alt="{{place.place.name}}" class="img-thumbnail"/>
+        </div>
+        <div class="col-md-8">
+            {{place.place.description}}
+        </div>
+    </div>
+    <div><a href="/#/home"><span class="glyphicon glyphicon-chevron-left"></span>Вернутся обратно</a></div>
+</div>
