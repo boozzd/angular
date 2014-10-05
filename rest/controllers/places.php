@@ -11,7 +11,9 @@ class Controller_Places Extends Controller_Base{
 
     public function index(){
         $places_model = new Model_Places();
-        $places = $places_model->getPlaces();
+        $request = new Request();
+        $page = (int)$request->getParam('page', null);
+        $places = $places_model->getPlaces(null,$page);
         echo json_encode($places);
     }
 
