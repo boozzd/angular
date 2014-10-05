@@ -34,6 +34,7 @@ function LoginController(location, auth, cacheFactory, modal){
     }
 
 }
+
 function regModalController($scope, $modalInstance){
     $scope.credentials = {login: "", password: "", confirmPass: "", email: ""};
     $scope.regForm = null;
@@ -60,14 +61,19 @@ function HomeController(location, auth, placesService, rootScope){
     var contr = this;
     if(auth.isAuth()){
         contr.credentials = auth.getAuth();
-
-        contr.logout = function(){
-            auth.logout();
-        };
-
-        placesService.getPlaces().then(function(data){
+        contr.page = 1;
+        placesService.getPlaces(contr.page).then(function(data){
             contr.places = data;
         });
+        contr.nextPlace = function(){
+            contr.page++;
+            var place = placesService.getPlaces(contr.page).then(function(data){
+                angular.forEach(data,function(value){
+                    //console.log(value);
+                        contr.places.push(value);
+                });
+            });
+        }
 
     }else{
         location.path('login');
