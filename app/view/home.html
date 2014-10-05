@@ -2,7 +2,7 @@
     <div class="panel panel-default clearfix">
         <div class="panel-body col-md-12 my-places" ng-repeat="place in home.places">
             <h1 class="col-md-offset-0">{{place.name}}</h1>
-            <figure class="col-md-4">
+            <figure class="col-md-4" id="place-{{place.id}}">
                 <img ng-src="/rest/public/images/{{place.image}}" alt="{{place.name}}" class="img-thumbnail my-image"/>
             </figure>
             <div class="col-md-8">
@@ -12,6 +12,8 @@
                 <a href="/#/home/{{place.url}}" class="btn btn-success">Подробнее <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
-
+        <div>
+            <button class="btn btn-warning" ng-click="home.nextPlace()">Показать следующие места</button>
+        </div>
     </div>
 </div>
