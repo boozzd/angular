@@ -202,6 +202,12 @@ abstract class Model_Base{
             $sql .= 'LIMIT '.$limit.' ';
         }
 
+        if(isset($data['limit_page'])){
+            $row = $data['limit_page']['row'];
+            $limit = $data['limit_page']['limit'];
+            $sql .= 'LIMIT '.$row.','.$limit;
+        }
+
         if(isset($data['order'])){
             $sql .= 'ORDER BY '.$data['order'];
         }
@@ -250,6 +256,14 @@ abstract class Model_Base{
     public function limit($data){
         if(is_int($data)){
             $this->selectData['limit'] = $data;
+        }
+        return $this;
+    }
+    public function limitPage($page, $limit){
+        if(is_int($page) && is_int($limit)){
+            $this->selectData['limit_page']['row'] = ($page*$limit)-$limit;
+            $this->selectData['limit_page']['limit'] = $limit;
+//            Tools::dump($this->selectData['limit_page']);
         }
         return $this;
     }
