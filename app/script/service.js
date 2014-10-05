@@ -76,9 +76,10 @@ function PlacesService($http, $q){
         getPlace: getPlace
     };
 
-    function getPlaces(){
+    function getPlaces(page){
         var deffered = $q.defer();
-        $http.get('/rest/?route=places/index').success(function(data){
+        var page = page ? '&page='+page : '';
+        $http.get('/rest/?route=places/index'+page).success(function(data){
             deffered.resolve(data);
         }).error(function(){
             deffered.reject('Произошла ошибка загрузки данных!');
