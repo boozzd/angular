@@ -7,11 +7,19 @@
  */
 class Model_Places extends Model_Base{
 
-    public function getPlaces(){
+    public function getPlaces($limit = null,$page = null){
+
         $this->select()
             ->from('places')
-            ->where('status =?', 1)
-            ->query();
+            ->where('status =?', 1);
+        if($page){
+            $this->limitPage($page, 5);
+        }
+        if($limit){
+            $this->limit($limit);
+        }
+//        Tools::dump($this->getSelect());
+        $this->query();
         return $this->fetchAll();
     }
 
