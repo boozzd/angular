@@ -18,7 +18,12 @@ class Request{
         }
 
     }
-    function getParam(){
+    public function getParam($param = null, $default = null){
+        if(isset($this->data->$param)){
+            return $this->data->$param;
+        }elseif($default){
+            return $default;
+        }
         return $this->data;
     }
 }
