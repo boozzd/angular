@@ -27,3 +27,6 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+Создаю приложение в котором клиентская часть отделена от серверной.
+Клиентская часть написана на Angular.js.
+Серверная часть "самопис" с целью обучения PHP ООП.
