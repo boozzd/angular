@@ -12,13 +12,20 @@ class Request{
 
         if(file_get_contents('php://input')){
             $data = file_get_contents('php://input');
-            $this->data = json_decode($data);
-        }else{
-            $this->data = $_GET;
+            foreach(json_decode($data) as $key => $value){
+                $this->data->$key = $value;
+            }
+
+        }
+        if($_GET){
+            foreach($_GET as $key=>$value){
+                $this->data->$key = $value;
+            }
         }
 
     }
     public function getParam($param = null, $default = null){
+
         if(isset($this->data->$param)){
             return $this->data->$param;
         }elseif($default){

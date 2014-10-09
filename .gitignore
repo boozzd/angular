@@ -35,3 +35,7 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+error.log
+access.log
+ссылки.txt

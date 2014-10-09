@@ -59,19 +59,22 @@ function regModalController($scope, $modalInstance){
 
 function HomeController(location, auth, placesService, rootScope){
     var contr = this;
+    contr.showNextButton = true;
     if(auth.isAuth()){
         contr.credentials = auth.getAuth();
         contr.page = 1;
         placesService.getPlaces(contr.page).then(function(data){
-            contr.places = data;
+            contr.places = data.places;
         });
         contr.nextPlace = function(){
             contr.page++;
             var place = placesService.getPlaces(contr.page).then(function(data){
-                angular.forEach(data,function(value){
-                    //console.log(value);
+                angular.forEach(data.places,function(value){
                         contr.places.push(value);
                 });
+                if(data.count < 5){
+                    contr.showNextButton = false;
+                }
             });
         }
 

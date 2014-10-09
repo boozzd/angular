@@ -13,8 +13,13 @@ class Controller_Places Extends Controller_Base{
         $places_model = new Model_Places();
         $request = new Request();
         $page = (int)$request->getParam('page', null);
-        $places = $places_model->getPlaces(null,$page);
-        echo json_encode($places);
+        $places = $places_model->getPlaces(null, $page);
+        $count = count($places);
+        $response = array(
+            'places'=>$places,
+            'count'=>$count
+        );
+        echo json_encode($response);
     }
 //
 //    public function addplace(){
@@ -36,10 +41,15 @@ class Controller_Places Extends Controller_Base{
     public function view(){
         if(isset($_SESSION['auth'])){
             $request = new Request();
-            $param = $request->getParam();
-            $place_model = new Model_Places();
-            $place = $place_model->getPlace($param['place']);
-            echo json_encode($place);
+            $param = $request->getParam('place', null);
+            if($param){
+                $place_model = new Model_Places();
+                $place = $place_model->getPlace($param);
+                echo json_encode($place);
+            }else{
+                echo json_encode(0);
+            }
+
         }else{
             echo json_encode(0);
         }

@@ -263,7 +263,6 @@ abstract class Model_Base{
         if(is_int($page) && is_int($limit)){
             $this->selectData['limit_page']['row'] = ($page*$limit)-$limit;
             $this->selectData['limit_page']['limit'] = $limit;
-//            Tools::dump($this->selectData['limit_page']);
         }
         return $this;
     }

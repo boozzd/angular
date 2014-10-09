@@ -12,7 +12,7 @@ function AuthService($http, ipCookie, $location, $rootScope,$q){
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8";
         $http({
             method: 'post',
-            url: '/rest/?route=user/login',
+            url: '/api/?route=user/login',
             data: {'name': credentials.login, 'password': credentials.password}
         }).then(function(response){
             if(angular.isObject(response.data)){
@@ -35,7 +35,7 @@ function AuthService($http, ipCookie, $location, $rootScope,$q){
     function logout(){
         $http({
             method: "post",
-            url: '/rest/?route=user/logout'
+            url: '/api/?route=user/logout'
         }).then(function(response){
             if(response.data == 0){
                 $rootScope.$emit('login', undefined);
@@ -50,7 +50,7 @@ function AuthService($http, ipCookie, $location, $rootScope,$q){
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8";
         $http({
             method: "post",
-            url: '/rest/?route=user/register',
+            url: '/api/?route=user/register',
             data:{'name': credentials.login, 'password': credentials.password, 'email': credentials.email}
         }).then(function(response){
             if(response.data == 1){
@@ -79,7 +79,7 @@ function PlacesService($http, $q){
     function getPlaces(page){
         var deffered = $q.defer();
         var page = page ? '&page='+page : '';
-        $http.get('/rest/?route=places/index'+page).success(function(data){
+        $http.get('/api/?route=places/index'+page).success(function(data){
             deffered.resolve(data);
         }).error(function(){
             deffered.reject('Произошла ошибка загрузки данных!');
@@ -89,7 +89,7 @@ function PlacesService($http, $q){
 
     function getPlace(value){
         var deffered = $q.defer();
-        $http.get('/rest/?route=places/view', {params: {place: value}})
+        $http.get('/api/?route=places/view', {params: {place: value}})
             .success(function(data){
             deffered.resolve(data);
         })

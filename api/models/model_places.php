@@ -18,7 +18,6 @@ class Model_Places extends Model_Base{
         if($limit){
             $this->limit($limit);
         }
-//        Tools::dump($this->getSelect());
         $this->query();
         return $this->fetchAll();
     }
