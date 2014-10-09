@@ -1,45 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="468df0c8-1de4-4b47-b282-2c392c14f37b" name="Default" comment="Добавил метод limitPage для выборки по страницам">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cat.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index1.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/config.php" afterPath="$PROJECT_DIR$/api/config.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/controllers/index.php" afterPath="$PROJECT_DIR$/api/controllers/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/controllers/places.php" afterPath="$PROJECT_DIR$/api/controllers/places.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/controllers/user.php" afterPath="$PROJECT_DIR$/api/controllers/user.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/index.php" afterPath="$PROJECT_DIR$/api/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/index2.php" afterPath="$PROJECT_DIR$/api/index2.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/Application.php" afterPath="$PROJECT_DIR$/api/library/Application.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/controller_base.php" afterPath="$PROJECT_DIR$/api/library/controller_base.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/model_base.php" afterPath="$PROJECT_DIR$/api/library/model_base.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/registry.php" afterPath="$PROJECT_DIR$/api/library/registry.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/request.php" afterPath="$PROJECT_DIR$/api/library/request.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/router.php" afterPath="$PROJECT_DIR$/api/library/router.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/template.php" afterPath="$PROJECT_DIR$/api/library/template.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/library/tools.php" afterPath="$PROJECT_DIR$/api/library/tools.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/models/model_places.php" afterPath="$PROJECT_DIR$/api/models/model_places.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/models/model_users.php" afterPath="$PROJECT_DIR$/api/models/model_users.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/public/images/odessa_ekaterina.jpg" afterPath="$PROJECT_DIR$/api/public/images/odessa_ekaterina.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/public/images/potem.jpg" afterPath="$PROJECT_DIR$/api/public/images/potem.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/view/index/index.php" afterPath="$PROJECT_DIR$/api/view/index/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rest/view/layouts/default.php" afterPath="$PROJECT_DIR$/api/view/layouts/default.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-cookie/.bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-cookie/.bower.json" />
+    <list default="true" id="468df0c8-1de4-4b47-b282-2c392c14f37b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-cookie/angular-cookie.js" afterPath="$PROJECT_DIR$/bower_components/angular-cookie/angular-cookie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-cookie/angular-cookie.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-cookie/angular-cookie.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-cookie/bower.json" afterPath="$PROJECT_DIR$/bower_components/angular-cookie/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contributors.txt" afterPath="$PROJECT_DIR$/contributors.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/script/controller.js" afterPath="$PROJECT_DIR$/app/script/controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/home.html" afterPath="$PROJECT_DIR$/app/view/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-cookie/package.json" afterPath="$PROJECT_DIR$/bower_components/angular-cookie/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/script/service.js" afterPath="$PROJECT_DIR$/app/script/service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap.js" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap.min.js" afterPath="$PROJECT_DIR$/bower_components/angular-bootstrap/ui-bootstrap.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angular.iws" />
@@ -97,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="828">
-              <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.7995666" vertical-offset="0" max-vertical-offset="923">
+              <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -151,10 +114,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="service.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/script/service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7032967" vertical-offset="998" max-vertical-offset="1908">
+            <state vertical-scroll-proportion="0.0" vertical-offset="998" max-vertical-offset="1908">
               <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
               <folding />
             </state>
@@ -218,8 +181,8 @@
         <option value="$PROJECT_DIR$/rest/library/model_base.php" />
         <option value="$PROJECT_DIR$/rest/controllers/places.php" />
         <option value="$PROJECT_DIR$/app/script/controller.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/script/service.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -288,38 +251,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angular" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,7 +412,13 @@
       <option name="project" value="LOCAL" />
       <updated>1412537310232</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="commit(много исправлений)">
+      <created>1412880613487</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1412880613488</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -491,6 +428,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25445706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -500,7 +438,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32853982" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -550,7 +487,8 @@
     <MESSAGE value="Добавил получение параметра по мени или же по умолчанию" />
     <MESSAGE value="Добавил подгрузку по страницам" />
     <MESSAGE value="Добавил метод limitPage для выборки по страницам" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил метод limitPage для выборки по страницам" />
+    <MESSAGE value="commit(много исправлений)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit(много исправлений)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -978,18 +916,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app/script/service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="828">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="998" max-vertical-offset="1908">
+          <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/script/service.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7032967" vertical-offset="998" max-vertical-offset="1908">
-          <caret line="91" column="23" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.7995666" vertical-offset="0" max-vertical-offset="923">
+          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
           <folding />
         </state>
       </provider>

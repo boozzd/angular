@@ -39,3 +39,5 @@ Thumbs.db
 error.log
 access.log
 ссылки.txt
+.gitignore
+.idea
