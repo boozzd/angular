@@ -362,15 +362,3 @@ abstract class Model_Base{
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
