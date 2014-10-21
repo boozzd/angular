@@ -41,3 +41,4 @@ access.log
 ссылки.txt
 .gitignore
 .idea
+*~
