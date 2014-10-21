@@ -19,7 +19,7 @@ Class Controller_User Extends Controller_Base {
             exit;
         }
         $request = new Request();
-        $request_data = $request->getParam();
+        $request_data = $request->getParams();
         $users_model = new Model_Users();
         if($request_data){
             $user = $users_model->getUsers($request_data->name, md5($request_data->password));
@@ -44,7 +44,7 @@ Class Controller_User Extends Controller_Base {
 
     function register(){
         $request = new Request();
-        $request_data = $request->getParam();
+        $request_data = $request->getParams();
         $users_model = new Model_Users();
         if(!empty($request_data)){
             $user = $users_model->getUser($request_data->name);

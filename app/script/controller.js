@@ -57,24 +57,65 @@ function regModalController($scope, $modalInstance){
     }
 }
 
-function HomeController(location, auth, placesService, rootScope){
+function HomeController(location, auth, placesService, cityService){
     var contr = this;
     contr.showNextButton = true;
     if(auth.isAuth()){
         contr.credentials = auth.getAuth();
         contr.page = 1;
+        contr.selectedtown = [];
         placesService.getPlaces(contr.page).then(function(data){
             contr.places = data.places;
         });
         contr.nextPlace = function(){
             contr.page++;
-            var place = placesService.getPlaces(contr.page).then(function(data){
+            var ids = [];
+            angular.forEach(contr.selectedtown, function(key , value){
+                if(key){
+                    ids.push(value);
+                }
+            });
+            var place = placesService.getPlaces(contr.page, ids).then(function(data){
                 angular.forEach(data.places,function(value){
                         contr.places.push(value);
                 });
                 if(data.count < 5){
                     contr.showNextButton = false;
+                                    }
+            });
+        }
+        cityService.getCity().then(function(result){
+            if(angular.isObject(result.data)){
+                contr.city = result.data;
+            }
+        });
+        contr.city = {
+            'c_id': 1,
+            'c_name': 'Украина'
+        }
+        contr.getTown = function(){
+            contr.page = 1;
+            cityService.getTown(contr.selectcity).then(function(response){
+                if(angular.isObject(response.data)){
+                    contr.towns = response.data;
+                }else{
+                    contr.towns  = [];
+                    placesService.getPlaces(contr.page).then(function(data){
+                        contr.places = data.places;
+                    });
                 }
+            });
+        }
+        contr.changeTown = function(){
+            contr.page = 1;
+            var ids = [];
+            angular.forEach(contr.selectedtown, function(key , value){
+                if(key){
+                    ids.push(value);
+                }
+            });
+            placesService.getPlaces(contr.page, ids).then(function(data){
+                contr.places = data.places;
             });
         }
 

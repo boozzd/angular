@@ -23,8 +23,8 @@ form input[ng-invalid]{
     border-color: #a94442;
 }
 .my-image{
-    max-height: 200px;
-    max-width: 300px;
+    max-height: 125px;
+    max-width: 250px;
 }
 .my-places:not(:last-child){
     border-bottom: 1px solid #dddddd;

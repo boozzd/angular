@@ -7,16 +7,20 @@
  */
 class Model_Places extends Model_Base{
 
-    public function getPlaces($limit = null,$page = null){
+    public function getPlaces($limit = null,$page = null, $city = null){
 
         $this->select()
-            ->from('places')
-            ->where('status =?', 1);
+            ->from(array('p' => 'places'))
+            ->join(array('c'=>'city'),'p.city = c.c_id')
+            ->where('p.status =?', 1);
         if($page){
             $this->limitPage($page, 5);
         }
         if($limit){
             $this->limit($limit);
+        }
+        if($city){
+            $this->where("c.c_id IN(?)", $city);
         }
         $this->query();
         return $this->fetchAll();

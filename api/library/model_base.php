@@ -167,8 +167,8 @@ abstract class Model_Base{
             }
         }
 
-        if(isset($data['joinLeft'])){
-            foreach($data['joinLeft'] as $value){
+        if(isset($data['joinRight'])){
+            foreach($data['joinRight'] as $value){
                 $from = $value['from'];
                 $as = $value['as'];
                 $sql .= 'RIGHT OUTER JOIN '.$from['table'].' '.$from['alias'].' ON '.$as.' ';
@@ -179,6 +179,9 @@ abstract class Model_Base{
             $where = $data['where'];
             $whereArr = array();
             foreach($where as $value){
+                if(is_array($value['data'])){
+                    $value['data'] = implode(',', $value['data']);
+                }
                 $this->params[] = $value['data'];
                 $whereArr[] = $value['query'];
             }
@@ -243,12 +246,18 @@ abstract class Model_Base{
         if($query && $data){
             $this->selectData['where'][] = array('query'=>$query, 'data' => $data);
         }
+        if($query &&!$data){
+            $this->selectData['where'][] = array('query'=>$query, 'data' => null );
+        }
         return $this;
     }
 
     public function orWhere($query, $data){
         if($query && $data){
             $this->selectData['orWhere'][] = array('query'=>$query, 'data' => $data);
+        }
+        if($query &&!$data){
+            $this->selectData['orWhere'][] = array('query'=>$query, 'data' => null );
         }
         return $this;
     }
@@ -343,6 +352,10 @@ abstract class Model_Base{
         }
 
         return $this;
+    }
+
+    public function getParams(){
+        return $this->params;
     }
 
     public function fetchAll(){

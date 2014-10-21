@@ -22,8 +22,9 @@
         .module('app',['ngRoute', 'ui.bootstrap', 'ipCookie'])
         .config(config)
         .controller('LoginController',['$location','AuthService','$cacheFactory','$modal', LoginController])
-        .controller('HomeController', ['$location','AuthService', 'PlacesService',HomeController])
+        .controller('HomeController', ['$location','AuthService', 'PlacesService', 'CityService',HomeController])
         .controller('PlaceController', ['$location','AuthService','PlacesService','$routeParams',PlaceController])
         .factory('AuthService',['$http','ipCookie','$location','$rootScope','$q',AuthService])
         .factory('PlacesService',['$http','$q', PlacesService])
+        .factory('CityService',['$http','$q', CityService])
         .directive('navbar',['AuthService','$rootScope',navbarDirective]);

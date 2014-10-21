@@ -1,6 +1,26 @@
 <div ng-controller="HomeController as home">
+
     <div class="panel panel-default clearfix">
-        <div class="panel-body col-md-12 my-places" ng-repeat="place in home.places">
+        <div class="col-md-12">
+            <div class="col-md-3">
+                <div role="form">
+                    <div class="form-group">
+                        <label for="cities">Выбирите страну:</label>
+                        <select name="cities" id="cities" class="form-control" ng-model="home.selectcity" ng-change="       home.getTown()">
+                            <option value="">не выбрано</option>
+                            <option value="{{city.c_id}}" ng-repeat="city in home.city">{{city.c_name}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div ng-repeat="town in home.towns">
+                            <label for="town_{{town.c_id}}">{{town.c_name}}</label>
+                            <input type="checkbox" value="{{town.c_id}}" name="town_" id="town_{{town.c_id}}" ng-model="home.selectedtown[town.c_id]" ng-change="home.changeTown()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel-body my-places" ng-repeat="place in home.places">
             <h1 class="col-md-offset-0">{{place.name}}</h1>
             <figure class="col-md-4" id="place-{{place.id}}">
                 <a href="/#/home/{{place.url}}">
@@ -18,4 +38,7 @@
             <button class="btn btn-warning" ng-click="home.nextPlace()" ng-show="home.showNextButton">Показать следующие места</button>
         </div>
     </div>
+            </div>
+        </div>
+        
 </div>

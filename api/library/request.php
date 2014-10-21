@@ -24,13 +24,18 @@ class Request{
         }
 
     }
-    public function getParam($param = null, $default = null){
+    public function getParam($param = null, $default){
 
         if(isset($this->data->$param)){
-            return $this->data->$param;
-        }elseif($default){
-            return $default;
+            $value = $this->data->$param;
         }
+        if(($value === null || $value === '') && ($default !== null)){
+            $value = $default;
+        }
+        return $value;
+    }
+
+    public function getParams(){
         return $this->data;
     }
 }

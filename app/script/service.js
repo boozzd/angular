@@ -76,10 +76,18 @@ function PlacesService($http, $q){
         getPlace: getPlace
     };
 
-    function getPlaces(page){
+    function getPlaces(page, city){
         var deffered = $q.defer();
         var page = page ? '&page='+page : '';
-        $http.get('/api/?route=places/index'+page).success(function(data){
+        var ids = '';
+        if(angular.isArray(city)){
+            ids = '&town='
+            angular.forEach(city, function(value){
+                    ids += value+',';
+            });
+            ids = ids.slice(0, -1);
+        }
+        $http.get('/api/?route=places/index'+page+ids).success(function(data){
             deffered.resolve(data);
         }).error(function(){
             deffered.reject('Произошла ошибка загрузки данных!');
@@ -96,6 +104,50 @@ function PlacesService($http, $q){
             .error(function(){
                 deffered.reject('Ошибка при загрузке данных!');
             });
+        return deffered.promise;
+    }
+}
+
+function CityService($http, $q){
+    return {
+        getCity: getCity,
+        getTown: getTown
+    };
+/*=======================
+    Получаем список стран
+========================*/
+    function getCity(){
+        var deffered = $q.defer();
+        $http({
+            method: 'post',
+            url: '/api/?route=places/getcity'
+        }).then(function(response){
+            if(angular.isObject(response)){
+                deffered.resolve(response);
+            }else{
+                deffered.reject('Ошибка загрузки данных!');
+            }
+            
+        });
+        return deffered.promise;
+    }
+/*======================
+    Получаем спиоск город выбраной страны
+=======================*/
+    function getTown(id){
+        var deffered = $q.defer();
+        $http({
+            method: 'post',
+            url: '/api/?route=places/gettown',
+            data: {'city': id}
+        }).then(function(response){
+            if(angular.isObject(response)){
+                deffered.resolve(response);
+            }else{
+                deffered.reject('Ошибка загрузки данных!');
+            }
+            
+        });
         return deffered.promise;
     }
 }
