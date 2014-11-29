@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 24.08.14
- * Time: 22:02
- */
+
 // абстрактый класс контроллера
 Abstract Class Controller_Base {
 

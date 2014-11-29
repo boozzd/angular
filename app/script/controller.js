@@ -4,7 +4,7 @@ function LoginController(location, auth, cacheFactory, modal){
     contr.alerts = [];
     contr.login = function(){
         auth.auth(this.credentials).then(function(value) {
-            location.path('home');
+            location.path('/home');
         },function(){
             contr.errorMsg = 'Комбинация логина и пароля не совпадает!';
             contr.credentials = {login: "", password: ""};
@@ -25,7 +25,6 @@ function LoginController(location, auth, cacheFactory, modal){
                 });
             });
     }
-
     contr.addAlert = function(data){
         contr.alerts.push(data);
     }
@@ -120,7 +119,7 @@ function HomeController(location, auth, placesService, cityService){
         }
 
     }else{
-        location.path('login');
+        location.path('/login');
     }
 }
 
@@ -133,6 +132,74 @@ function PlaceController(location, auth,placesService,$routeParams){
         });
 
     }else{
-        location.path('login');
+        location.path('home');
+    }
+}
+
+function UserEditController($location,auth, $routeParams, userService){
+    var contr = this;
+    var placeAdd = {};
+    var userId = $routeParams.userId;
+    contr.alerts = [];
+    if(auth.isAuth() && userId){
+        if(userId){
+            userService.getUserData(userId).then(function(data){
+                contr.user = data.data[0];
+            });
+            contr.send = function(user){
+                contr.user = angular.copy(user);
+                contr.formError = (contr.user.password == contr.user.passwordConfirm) ? false : true;
+                if(!contr.formError){
+                    userService.changeUser(contr.user).then(function(result){
+                        contr.addAlert({'type': 'success', 'msg': 'Данные изменены.'});
+                    }, function(result){
+                        contr.addAlert({'type': 'danger', 'msg': 'Произошла ошибка.'});
+                    });
+                }
+            }
+            contr.reset = function(){
+                contr.user = {};
+            }
+            contr.addAlert = function(data){
+                contr.alerts.push(data);
+            }
+            contr.removeAlerts = function(index){
+                contr.alerts.splice(index, 1);
+            }
+        }else{
+            $location.path('/users');
+        }
+    }else{
+        $location.path('/home');
+    }
+}
+
+function UsersController(location, auth, userService){
+    var contr = this;
+    contr.alerts = [];
+    if(auth.isAuth()){
+        userService.getUsersData().then(function(data){
+            contr.users = data.data;
+        });
+        contr.removeUser = function(userId){
+            userService.removeUser(userId).then(function(response){
+                for(var k in contr.users){
+                    if(userId == contr.users[k].id){
+                        delete contr.users[k];
+                    }
+                }
+                contr.addAlert({'type': 'success', 'msg': 'Пользователь удален.'});
+            },function(response){
+                contr.addAlert({'type': 'danger', 'msg': 'Произошла ошибка. У Вас нет прав для удаления пользователя.'});
+            });
+        }
+        contr.addAlert = function(data){
+            contr.alerts.push(data);
+        }
+        contr.removeAlerts = function(index){
+            contr.alerts.splice(index, 1);
+        }
+    }else{
+        location.path('/home');
     }
 }

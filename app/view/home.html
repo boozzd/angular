@@ -1,12 +1,11 @@
 <div ng-controller="HomeController as home">
-
     <div class="panel panel-default clearfix">
         <div class="col-md-12">
-            <div class="col-md-3">
+            <div class="col-md-3 rubricator">
                 <div role="form">
                     <div class="form-group">
                         <label for="cities">Выбирите страну:</label>
-                        <select name="cities" id="cities" class="form-control" ng-model="home.selectcity" ng-change="       home.getTown()">
+                        <select name="cities" id="cities" class="form-control" ng-model="home.selectcity" ng-change="home.getTown()">
                             <option value="">не выбрано</option>
                             <option value="{{city.c_id}}" ng-repeat="city in home.city">{{city.c_name}}</option>
                         </select>
@@ -21,24 +20,21 @@
             </div>
             <div class="col-md-9">
                 <div class="panel-body my-places" ng-repeat="place in home.places">
-            <h1 class="col-md-offset-0">{{place.name}}</h1>
-            <figure class="col-md-4" id="place-{{place.id}}">
-                <a href="/#/home/{{place.url}}">
-                    <img ng-src="/api/public/images/{{place.image}}" alt="{{place.name}}" class="img-thumbnail my-image"/>
-                </a>
-            </figure>
-            <div class="col-md-8">
-                {{place.description}}
+                    <h1 class="col-md-offset-0">{{place.name}}</h1>
+                    <figure class="col-md-4" id="place-{{place.id}}">
+                        <a href="/#/home/{{place.url}}">
+                            <img ng-src="/api/public/images/{{place.image}}" alt="{{place.name}}" class="img-thumbnail my-image"/>
+                        </a>
+                    </figure>
+                    <div class="col-md-8">
+                        {{place.description}}
+                    </div>
+                    <div class="col-md-2 col-md-offset-10 text-right">
+                        <a href="/#/home/{{place.url}}" class="btn btn-success">Подробнее <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-2 col-md-offset-10 text-right">
-                <a href="/#/home/{{place.url}}" class="btn btn-success">Подробнее <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-        </div>
-        <div>
-            <button class="btn btn-warning" ng-click="home.nextPlace()" ng-show="home.showNextButton">Показать следующие места</button>
         </div>
     </div>
-            </div>
-        </div>
         
 </div>

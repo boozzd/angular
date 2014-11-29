@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 24.08.14
- * Time: 21:34
- */
 
 class Router {
     private $registry;
@@ -32,7 +26,6 @@ class Router {
         }
         $route = trim($route, '/\\');
         $parts = explode('/', $route);
-//        var_dump($route);
         $cmd_path = $this->path;
         foreach($parts as $part){
             $fullpath = $cmd_path.$part;

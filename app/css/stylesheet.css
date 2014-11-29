@@ -32,3 +32,18 @@ form input[ng-invalid]{
 img:hover{
     opacity: 0.9;
 }
+.rubricator{
+    padding: 15px;
+    margin-top:10px;
+}
+.required-column{
+    color: #a94442;
+}
+#user_edit{
+    position: relative;
+}
+.user-edit-alert{
+    top:0;
+    position: absolute;
+    z-index: 2;
+}

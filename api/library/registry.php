@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 24.08.14
- * Time: 21:29
- */
 
 class Registry {
     private $vars = array();

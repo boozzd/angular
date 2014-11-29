@@ -48,19 +48,20 @@ function AuthService($http, ipCookie, $location, $rootScope,$q){
 
     function register(credentials, callback){
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=utf-8";
+        $defer = $q.defer();
         $http({
             method: "post",
             url: '/api/?route=user/register',
             data:{'name': credentials.login, 'password': credentials.password, 'email': credentials.email}
         }).then(function(response){
             if(response.data == 1){
-                $q.resolve(response.data);
+                $defer.resolve(response.data);
             }else{
-                $q.reject('произошла ошибка регистрации');
+                $defer.reject('произошла ошибка регистрации');
             }
 
         });
-        return $q.promise;
+        return $defer.promise;
     }
 
     function getAuth(){
@@ -122,7 +123,7 @@ function CityService($http, $q){
             method: 'post',
             url: '/api/?route=places/getcity'
         }).then(function(response){
-            if(angular.isObject(response)){
+            if(angular.isObject(response.data)){
                 deffered.resolve(response);
             }else{
                 deffered.reject('Ошибка загрузки данных!');
@@ -132,7 +133,7 @@ function CityService($http, $q){
         return deffered.promise;
     }
 /*======================
-    Получаем спиоск город выбраной страны
+    Получаем список город выбраной страны
 =======================*/
     function getTown(id){
         var deffered = $q.defer();
@@ -141,7 +142,7 @@ function CityService($http, $q){
             url: '/api/?route=places/gettown',
             data: {'city': id}
         }).then(function(response){
-            if(angular.isObject(response)){
+            if(angular.isObject(response.data)){
                 deffered.resolve(response);
             }else{
                 deffered.reject('Ошибка загрузки данных!');
@@ -150,4 +151,80 @@ function CityService($http, $q){
         });
         return deffered.promise;
     }
+}
+
+/*=================
+    Сервис для обмена данными пользователя
+==================*/
+function UserService($http, $q){
+    return {
+        getUsersData: getUsersData,
+        getUserData: getUserData,
+        removeUser: removeUser,
+        changeUser: changeUser,
+    }
+
+    function getUsersData(){
+        var deffered = $q.defer();
+        $http({
+            method: 'get',
+            url: '/api/?route=user/getusers'
+        }).then(function(response){
+            if(angular.isObject(response.data)){
+                deffered.resolve(response);
+            }else{
+                deffered.reject('Ошибка загрузки данных');
+            }
+        });
+        return deffered.promise;
+    }
+
+    function getUserData(id){
+        var deffered = $q.defer();
+        $http({
+            method: 'post',
+            url: '/api/?route=user/getuser',
+            data: {'id': id},
+        }).then(function(response){
+            if(angular.isObject(response.data)){
+                deffered.resolve(response);
+            }else{
+                deffered.reject('Ошибка загрузки данных');
+            }
+        });
+        return deffered.promise;
+    }
+
+    function removeUser(userId){
+        var deffered = $q.defer();
+        $http({
+            method: 'post',
+            url: '/api/?route=user/removeuser',
+            data: {'id': userId},
+        }).then(function(response){
+            if(response.data != 0){
+                deffered.resolve(true);
+            }else{
+                deffered.reject(false);
+            }
+        });
+        return deffered.promise;
+    }
+
+    function changeUser(user){
+        var deffered = $q.defer();
+        $http({
+            method: 'post',
+            url: '/api/?route=user/changeuser',
+            data: {'user':user},
+        }).then(function(response){
+            if(response.data !=0){
+                deffered.resolve(true);
+            }else{
+                deffered.reject(false);
+            }
+        });
+        return deffered.promise;
+    }
+    
 }

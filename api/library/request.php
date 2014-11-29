@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 09.09.14
- * Time: 22:07
- */
+
 class Request{
     private $data;
 

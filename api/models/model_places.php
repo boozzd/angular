@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 21.09.14
- * Time: 17:50
- */
+
 class Model_Places extends Model_Base{
 
     public function getPlaces($limit = null,$page = null, $city = null){

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 25.08.14
- * Time: 22:34
- */
+
 abstract class Model_Base{
     protected $db;
     protected $table;
@@ -22,13 +17,13 @@ abstract class Model_Base{
         $this->table = $tableName;
         if($id){
             $this->data_id = $id;
-            $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE id = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt = $dbObject->prepare("SELECT * FROM $this->table WHERE id = :id");
+            $stmt->bindParam(':id', $this->data_id, PDO::PARAM_INT);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->data_result = $result;
-            if(isset($this->data_result) OR empty($this->data_result)){
-                foreach($result as $key=>$value){
+            if(isset($this->data_result) OR !empty($this->data_result)){
+                foreach($this->data_result as $key=>$value){
                     $this->$key = $value;
                 }
             }
@@ -88,7 +83,7 @@ abstract class Model_Base{
         }
         $dataUpdate = implode(', ', $dataUpdate);
         try{
-            $stmt = $this->db->prepare("UPDATE $this->table SET $dataUpdate WHERE `id` = $whereId");var_dump($stmt);
+            $stmt = $this->db->prepare("UPDATE $this->table SET $dataUpdate WHERE `id` = $whereId");
             $stmt->execute();
         }catch(PDOException $e){
             echo 'ERROR DB '.$e->getMessage();
@@ -102,7 +97,7 @@ abstract class Model_Base{
         $fields = $this->getFields();
         if(in_array('id', $fields)){
             try{
-                $result = $this->db->exec("DELETE FROM$this->tabel WHERE `id` = $this->id");
+                $result = $this->db->exec("DELETE FROM $this->table WHERE `id` = $this->id");
             }catch(PDOException $e){
                 echo "Record not found in ".$this->table;
                 echo 'Error: '.$e->getMessage();
@@ -127,6 +122,7 @@ abstract class Model_Base{
     }
 
     public function getSelect(){
+        $this->params = null;
         $sql = "";
         $params = array();
         $data = $this->selectData;
@@ -338,6 +334,7 @@ abstract class Model_Base{
     }
 
     public function select(){
+        $this->selectData = null;
         $this->selectData['select'] = true;
         return $this;
     }

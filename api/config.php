@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 24.08.14
- * Time: 21:04
- */
+error_reporting(false);
 define('DS', DIRECTORY_SEPARATOR);
 $sitepath = realpath(dirname(__FILE__).DS).DS;
 define('SITE_PATH', $sitepath);

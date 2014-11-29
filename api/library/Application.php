@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 24.08.14
- * Time: 21:15
- */
+
 function __autoload($classname){
     $filename = strtolower($classname).'.php';
     $expArr = explode('_',$classname);

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: boozz
- * Date: 21.09.14
- * Time: 17:47
- */
+
 class Controller_Places Extends Controller_Base{
 
     public $layouts = 'default';
@@ -15,6 +10,9 @@ class Controller_Places Extends Controller_Base{
         $page = (int)$request->getParam('page', null);
         $town = $request->getParam('town', null);
         $town = $town ? explode(',', $town) : null;
+        foreach($town as $key=>$value){
+            $town[$key] = (int)$town[$key];
+        }
         $places = $places_model->getPlaces(null, $page, $town);
         $count = count($places);
         $response = array(
@@ -23,23 +21,7 @@ class Controller_Places Extends Controller_Base{
         );
         echo json_encode($response);
     }
-//
-//    public function addplace(){
-//
-//        $request = new Request();
-//        $request_data = $request->getParam();
-//        $places_model = new Model_Places();
-//        if(!empty($request_data)){
-//            $places_model->name = $request_data->name;
-//            $places_model->image = md5($request_data->password);
-//            $places_model->u_email = $request_data->email;
-//            $places_model->save();
-//            echo json_encode(1);
-//            exit;
-//        }else{
-//            echo json_encode(0);
-//        }
-//    }
+
     public function view(){
         if(isset($_SESSION['auth'])){
             $request = new Request();
